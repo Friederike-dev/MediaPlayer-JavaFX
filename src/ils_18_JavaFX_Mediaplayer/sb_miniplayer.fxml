@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ils_18_JavaFX_Mediaplayer.FXMLController">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Datei">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#ladenKlick" text="Öffnen...">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
+            <MenuItem mnemonicParsing="false" onAction="#beendenKlick" text="Beenden" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Wiedergabe">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#pauseKlick" text="Pause" />
+            <MenuItem mnemonicParsing="false" onAction="#playKlick" text="Wiedergeben" />
+            <MenuItem mnemonicParsing="false" onAction="#stoppKlick" text="Stop" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <items>
+          <Button mnemonicParsing="false" onAction="#ladenKlick">
+               <graphic>
+                  <ImageView fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/oeffnen.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <!-- ########################################################## f�r Einsendeaufgabe 2 & 3 ############################################### -->
+            <Button fx:id="playPauseButton" disable="true" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#playOrPauseKlick">
+               <graphic>
+                  <ImageView fx:id="playOrPauseSymbol" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/play.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <!-- ########################################################## f�r Einsendeaufgabe 3 ############################################### -->
+            <Button fx:id="stopButton" disable="true" layoutX="98.0" layoutY="10.0" mnemonicParsing="false" onAction="#stoppKlick">
+               <graphic>
+                  <ImageView fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/stop.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <!-- ########################################################## f�r Einsendeaufgabe 3 ############################################### -->
+            <Button fx:id="speakerButton" disable="true" layoutX="142.0" layoutY="10.0" mnemonicParsing="false" onAction="#lautsprecherKlick">
+               <graphic>
+                  <ImageView fx:id="symbol" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../icons/mute.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+        </items>
+      </ToolBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+      <children>
+            <SplitPane dividerPositions="0.29797979797979796" layoutX="204.0" layoutY="78.0" prefHeight="160.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="100.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                      <!-- ########################################################## f�r Einsendeaufgabe 1 ############################################### -->
+                        <ListView fx:id="liste" layoutX="-6.0" layoutY="34.0" onMouseClicked="#listenEintragKlick" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="400.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <MediaView fx:id="mediaview" layoutX="63.0" layoutY="52.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
